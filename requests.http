@@ -1,0 +1,53 @@
+### Requisições de teste para a extensão "REST Client" do VS Code.
+### Clique em "Send Request" acima de cada bloco.
+
+@base = http://127.0.0.1:8000
+
+### Boas-vindas
+GET {{base}}/
+
+### Listar todos os livros
+GET {{base}}/livros
+
+### Filtrar por autor e status de leitura
+GET {{base}}/livros?autor=machado&lido=true
+
+### Buscar o livro de id 1
+GET {{base}}/livros/1
+
+### Buscar um id que não existe (deve dar 404)
+GET {{base}}/livros/999
+
+### Criar um livro
+POST {{base}}/livros
+Content-Type: application/json
+
+{
+  "titulo": "Vidas Secas",
+  "autor": "Graciliano Ramos",
+  "ano": 1938,
+  "lido": false
+}
+
+### Criar com dados inválidos (deve dar 422)
+POST {{base}}/livros
+Content-Type: application/json
+
+{
+  "titulo": "",
+  "autor": "Alguém"
+}
+
+### Atualizar o livro de id 2
+PUT {{base}}/livros/2
+Content-Type: application/json
+
+{
+  "titulo": "O Cortiço",
+  "autor": "Aluísio Azevedo",
+  "ano": 1890,
+  "lido": true
+}
+
+### Remover o livro de id 3
+DELETE {{base}}/livros/3
