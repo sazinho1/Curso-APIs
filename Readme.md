@@ -149,22 +149,6 @@ curl -X DELETE http://127.0.0.1:8000/livros/1
 
 ---
 
-## Roteiro para a demonstração em aula (≈ 10 min)
-
-1. **Mostrar o código** (`main.py`): como com poucas linhas já existe uma API. Destacar `@app.get`, `@app.post` etc.
-2. **Subir o servidor** com `fastapi dev main.py`.
-3. **Abrir `/docs`** e mostrar que a documentação foi gerada sozinha.
-4. **GET `/livros`**: ver a lista de livros (status `200`).
-5. **GET `/livros/1`** e depois **`/livros/999`**: mostrar o erro `404` com mensagem clara.
-6. **POST `/livros`**: criar um livro (status `201`) e listar de novo para ver que ele apareceu.
-7. **POST com dados inválidos** (ex.: `titulo` vazio): mostrar o erro `422`. O FastAPI valida os dados automaticamente.
-8. **PUT `/livros/2`**: alterar `lido` para `true`.
-9. **DELETE `/livros/3`**: remover (status `204`) e conferir na listagem.
-10. **Repetir no Postman** para mostrar que qualquer cliente HTTP consegue consumir a API.
-11. **Mudar o código ao vivo** (ex.: alterar a mensagem da rota `/`), salvar e mostrar o servidor recarregando sozinho.
-
----
-
 ## Status codes usados
 
 | Código | Significado                                  | Onde aparece                         |
@@ -174,16 +158,6 @@ curl -X DELETE http://127.0.0.1:8000/livros/1
 | 204    | Sem conteúdo                                 | DELETE com sucesso                   |
 | 404    | Não encontrado                               | id inexistente                       |
 | 422    | Dados inválidos                              | JSON fora do formato esperado        |
-
----
-
-## Desafios para praticar
-
-1. Adicionar o campo `genero` ao livro.
-2. Criar a rota `GET /livros/{id}/resumo`, que devolve só título e autor.
-3. Criar um filtro `?ano_min=1900` na listagem.
-4. Criar a rota `PATCH /livros/{id}/lido` que apenas marca o livro como lido.
-5. Trocar a lista em memória por um banco de dados (SQLite + SQLModel ou SQLAlchemy).
 
 ---
 
